@@ -3,8 +3,8 @@ Name:
 Domain:
 DB:
   MySQL:
-    BBSport:
-      Develop: develop
+    Develop:
+      Database: develop
       Master:
         Host:     
         Port:     

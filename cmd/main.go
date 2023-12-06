@@ -2,6 +2,7 @@ package main
 
 import (
 	"go-clean-arch/app/websocketcilent"
+	"go-clean-arch/app/websocketserver"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -9,16 +10,26 @@ import (
 
 // root
 var rootCmd = &cobra.Command{
-	Long: "game core service.",
+	Long: "start service.",
 }
 
-// event
-var eventCmd = &cobra.Command{
-	Use:       "event websocket-client",
-	Short:     "event",
+// websocket-client
+var websocketClientCmd = &cobra.Command{
+	Use:       "websocket-client",
+	Short:     "websocket-client",
 	ValidArgs: []string{},
 	Run: func(cmd *cobra.Command, args []string) {
 		websocketcilent.Start()
+	},
+}
+
+// websocket-server
+var websocketServerCmd = &cobra.Command{
+	Use:       "websocket-server",
+	Short:     "websocket-server",
+	ValidArgs: []string{},
+	Run: func(cmd *cobra.Command, args []string) {
+		websocketserver.Start()
 	},
 }
 
@@ -27,7 +38,8 @@ func main() {
 	rootCmd.CompletionOptions.DisableDefaultCmd = true
 
 	// 綁定 eventCmd
-	rootCmd.AddCommand(eventCmd)
+	rootCmd.AddCommand(websocketClientCmd)
+	rootCmd.AddCommand(websocketServerCmd)
 
 	if err := rootCmd.Execute(); err != nil {
 		os.Exit(1)

@@ -4,8 +4,8 @@ Port:
 Domain:
 DB:
   MySQL:
-    BBSport:
-      Database: bb_sport
+    Develop:
+      Database: develop
       Master:
         Host:     
         Port:     

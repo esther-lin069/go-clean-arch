@@ -4,7 +4,6 @@ import (
 	_logger "go-clean-arch/pkg/logger"
 	"strings"
 
-	"github.com/go-playground/validator"
 	"github.com/spf13/viper"
 )
 
@@ -59,29 +58,26 @@ func NewWebsocketClientEnv(logger _logger.Logger) (env *WebsocketClientEnv, err 
 
 	// env 檔案路徑
 	path := "./env"
-	configName := "websocketcilent"
-	prefix := configName
+	configName := "websocketclient"
+	prefix := "app"
 
 	// 讀取設定
 	viper, err := loadYaml(path, configName, prefix)
 	if err != nil {
-		logger.Error("讀取 websocketcilent.yaml 發生錯誤", err)
 		return
 	}
 
 	// 解析設定
 	err = viper.Unmarshal(env)
 	if err != nil {
-		logger.Error("解析 websocketcilent.yaml 發生錯誤", err)
 		return
 	}
 
 	// 驗證環境變數是否有符合結構
-	err = validator.New().Struct(env)
-	if err != nil {
-		logger.Error("環境設定驗證錯誤", err)
-		return
-	}
+	// err = validator.New().Struct(env)
+	// if err != nil {
+	// 	return
+	// }
 
 	logger.Info("讀取 env 完成", map[string]interface{}{
 		"env": env,
@@ -96,7 +92,7 @@ func NewWebsocketServerEnv(logger _logger.Logger) (env *WebsocketServerEnv, err 
 	// env 檔案路徑
 	path := "./env"
 	configName := "websocketserver"
-	prefix := configName
+	prefix := "app"
 
 	// 讀取設定
 	viper, err := loadYaml(path, configName, prefix)
@@ -112,12 +108,12 @@ func NewWebsocketServerEnv(logger _logger.Logger) (env *WebsocketServerEnv, err 
 		return
 	}
 
-	// 驗證環境變數是否有符合結構
-	err = validator.New().Struct(env)
-	if err != nil {
-		logger.Error("環境設定驗證錯誤", err)
-		return
-	}
+	// // 驗證環境變數是否有符合結構
+	// err = validator.New().Struct(env)
+	// if err != nil {
+	// 	logger.Error("環境設定驗證錯誤", err)
+	// 	return
+	// }
 
 	logger.Info("讀取 env 完成", map[string]interface{}{
 		"env": env,

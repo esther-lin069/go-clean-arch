@@ -1,0 +1,26 @@
+Env:
+Name:
+Port:
+Domain:
+DB:
+  MySQL:
+    BBSport:
+      Database: bb_sport
+      Master:
+        Host:     
+        Port:     
+        User:     
+        Password: 
+        LifeTime: 
+        MaxConn:  
+        Idle:     
+        Debug:
+      Slave:
+        Host:     
+        Port:     
+        User:     
+        Password: 
+        LifeTime: 
+        MaxConn:  
+        Idle:     
+        Debug:

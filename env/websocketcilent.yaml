@@ -1,0 +1,30 @@
+Env:
+Name:
+Domain:
+DB:
+  MySQL:
+    BBSport:
+      Develop: develop
+      Master:
+        Host:     
+        Port:     
+        User:     
+        Password: 
+        LifeTime: 
+        MaxConn:  
+        Idle:     
+        Debug:
+      Slave:
+        Host:     
+        Port:     
+        User:     
+        Password: 
+        LifeTime: 
+        MaxConn:  
+        Idle:     
+        Debug:
+Websocket:
+  Client:
+    Origin:
+    URL:
+    AuthKey:
